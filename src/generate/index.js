@@ -1,10 +1,12 @@
 const { choose } = require('creative-code-toolkit');
 const flutter = require('./flutter');
 const offset = require('./offset');
+const kscope = require('./kscope');
 
 const variations = {
   flutter,
-  offset
+  offset,
+  kscope
 };
 
 module.exports = () => {
