@@ -25,13 +25,15 @@ const {
 module.exports = () => {
 
   /** Setup **/
-  const alpha = Number(mapRange(Math.random(), 0, 1, 0.5, 1).toFixed(3));
-  const sw = rndIntB(1, 10);
+  const alpha = Number(mapRange(Math.random(), 0, 1, 0.25, 0.5).toFixed(3));
+  const sw = rndIntB(1, 30);
   const color = [
     rndIntB(0, 0xFF),
     rndIntB(0, 0xFF),
     rndIntB(0, 0xFF)
   ];
+
+  const frames = rndIntB(1, 10);
 
   const ns = rndIntB(2, 8);
   const ss = genArray(ns).map(() => rndIntB(2, 8));
@@ -51,7 +53,6 @@ module.exports = () => {
     sp
   };
 
-  stroke(...color, alpha);
   strokeWeight(sw);
 
   /** Draw **/
@@ -65,7 +66,11 @@ module.exports = () => {
         Math.sin(sp[i][0]) * sp[i][1]
       ];
       // const npos = pos.map(c => -c);
-      const ply = poly(...pos, s, sr[i]);
+      const fr = frameCount / frames;
+      stroke(...color, alpha * (1 - fr));
+
+      const r = (1 - fr) * sr[i];
+      const ply = poly(...pos, s, r);
 
       const m2 = vec.matrixBuilder()
         .scale(-1, 1)
@@ -86,7 +91,7 @@ module.exports = () => {
       drawPoly(ply.map(vec.fTransform(m4)));
     });
   }
-  draw(0);
+  genArray(frames).map((_, i) => draw(i));
 
   const buf = canvas.toBuffer();
   writeFileAsync('out.png', buf).then(() => {
