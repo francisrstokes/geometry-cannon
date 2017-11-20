@@ -1,4 +1,5 @@
-const { choose } = require('creative-code-toolkit');
+const { chooseWithout } = require('creative-code-toolkit');
+const { getState, writeState } = require('./util');
 const flutter = require('./flutter');
 const offset = require('./offset');
 const kscope = require('./kscope');
@@ -11,8 +12,11 @@ const variations = {
   kscope
 };
 
-module.exports = () => {
-  const variation = choose(Object.keys(variations));
+module.exports = async () => {
+  const state = await getState();
+  const variation = chooseWithout(Object.keys(variations), state.last);
+  state.last = variation;
+  await writeState(state);
   const result = variations[variation]();
   return Object.assign({ type: variation }, result);
 };

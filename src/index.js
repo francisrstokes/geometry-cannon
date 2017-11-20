@@ -1,12 +1,13 @@
 const config = require('./config')
 const Twit = require('twit');
 const T = new Twit(config);
-
 const generate = require('./generate');
-const { image, type, params } = generate();
 
-/* eslint-disable camelcase */
-const metadataCreateCb = (mediaIdStr) =>
+generate().then(res => {
+  const { image, type, params } = res;
+
+  /* eslint-disable camelcase */
+  const metadataCreateCb = (mediaIdStr) =>
   (err, data) => {
     if (err) {
       console.log(err);
@@ -33,7 +34,7 @@ const metadataCreateCb = (mediaIdStr) =>
     }
   };
 
-const mediaUploadCb = (err, data) => {
+  const mediaUploadCb = (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -47,8 +48,9 @@ const mediaUploadCb = (err, data) => {
     console.log('Creating metadata...');
     T.post('media/metadata/create', meta_params, metadataCreateCb(mediaIdStr));
   }
-};
+  };
 
-console.log('Starting upload');
-T.post('media/upload', { media_data: image }, mediaUploadCb);
-/* eslint-disable camelcase */
+  console.log('Starting upload');
+  T.post('media/upload', { media_data: image }, mediaUploadCb);
+  /* eslint-disable camelcase */
+});

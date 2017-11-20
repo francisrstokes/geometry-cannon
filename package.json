@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.0.0-alpha.6",
-    "creative-code-toolkit": "^0.2.0",
+    "creative-code-toolkit": "^0.3.1",
     "microcan": "0.0.2",
     "twit": "^2.2.9",
     "twit-promise": "^2.1.0",

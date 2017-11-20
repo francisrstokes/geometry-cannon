@@ -12,3 +12,4 @@ bin/
 src/config.js
 out.png
 src/run.js
+state.json
