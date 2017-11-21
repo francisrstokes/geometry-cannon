@@ -5,11 +5,13 @@ const offset = require('./offset');
 const kscope = require('./kscope');
 const hwave = require('./hwave');
 const pdj = require('./pdj');
+const eye = require('./eye');
 
 const variations = {
+  offset,
+  eye,
   hwave,
   flutter,
-  offset,
   kscope,
   pdj
 };
