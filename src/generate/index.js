@@ -4,12 +4,14 @@ const flutter = require('./flutter');
 const offset = require('./offset');
 const kscope = require('./kscope');
 const hwave = require('./hwave');
+const pdj = require('./pdj');
 
 const variations = {
   hwave,
   flutter,
   offset,
-  kscope
+  kscope,
+  pdj
 };
 
 module.exports = async () => {
