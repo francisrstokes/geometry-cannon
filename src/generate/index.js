@@ -6,6 +6,7 @@ const kscope = require('./kscope');
 const hwave = require('./hwave');
 const pdj = require('./pdj');
 const eye = require('./eye');
+const singrid = require('./singrid');
 
 const variations = {
   offset,
@@ -13,7 +14,8 @@ const variations = {
   hwave,
   flutter,
   kscope,
-  pdj
+  pdj,
+  singrid
 };
 
 module.exports = async () => {

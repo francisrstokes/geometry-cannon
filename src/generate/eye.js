@@ -17,7 +17,6 @@ const {
   stroke,
   strokeWeight,
   noFill,
-  drawPoly,
   ellipse
 } = injectCtx(ctx);
 
