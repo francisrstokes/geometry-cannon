@@ -10,7 +10,7 @@ const singrid = require('./singrid');
 const mandala = require('./mandala');
 
 const variations = {
-  offset,
+  // offset,
   mandala,
   eye,
   hwave,

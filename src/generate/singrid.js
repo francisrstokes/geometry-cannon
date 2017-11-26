@@ -24,6 +24,16 @@ module.exports = () => {
   const gridSize = w;
   const R = gridSize / 2;
   const sqSize = gridSize / cellRowCount;
+  const color = [
+    rndIntB(30, 255),
+    rndIntB(30, 255),
+    rndIntB(30, 255)
+  ];
+  const co = [
+    Number(Math.random().toFixed(3)),
+    Number(Math.random().toFixed(3)),
+    Number(Math.random().toFixed(3))
+  ];
 
   const getFuncArgs = (x, y, t) => {
     const X = (x - cellRowCount / 2) * sqSize;
@@ -79,9 +89,9 @@ module.exports = () => {
   const clk = rndIntB(0, 1000000);
 
   const drawCell = (cellValue, x, y) => {
-    const c = mapRange(cellValue, -1, 1, 255, 64) >> 0;
-    const color = [c, c, c, 1];
-    fill(...color);
+    const c = mapRange(cellValue, -1, 1, 1, 0.1);
+    const col = [...color.map((x, i) => (x * c * co[i]) >> 0), 1];
+    fill(...col);
     const drawSize = mapRange(cellValue, -1, 1, 0, sqSize) >> 0;
     const offset = mapRange(drawSize, 0, sqSize, sqSize / 2, 0) >> 0;
     rect([(x * sqSize) + offset, (y * sqSize) + offset], drawSize, drawSize);
@@ -91,7 +101,9 @@ module.exports = () => {
 
   const params = {
     gfp,
-    clk
+    clk,
+    color,
+    co
   };
 
   /** Draw **/
