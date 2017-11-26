@@ -66,8 +66,6 @@ module.exports = () => {
     (x, y, t, X, Y, a) => Math.sin(t + (x + Y) / a) + Math.cos(t * (a / X / Y) + (x + Y)),
     (x, y, t, X, Y, a) => Math.sin(t + (a * a * a) * R) + Math.cos(t / a),
     (x, y, t, X, Y, a) => Math.sin(t + (x + Y) + a) + Math.cos(t * 1.5 + (x + Y) + a),
-    (x, y, t) => Math.sin(t + x) + Math.cos(t * 2 + y),
-    (x, y, t) => Math.sin(t + x - y),
     (x, y, t, X, Y) => Math.sin(Math.sin(t + (X) % (Y)) + Math.cos(t + (Y) % (X))),
     (x, y, t, X, Y, a) => Math.sin(t + (a * a) * R) * Math.cos(t + Math.sin(x + y)),
     (x, y, t) => Math.sin(t + (x + 1) * (y + 1)) * Math.cos(t + (x + 1) * (y + 1)),

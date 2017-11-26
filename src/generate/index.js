@@ -7,9 +7,11 @@ const hwave = require('./hwave');
 const pdj = require('./pdj');
 const eye = require('./eye');
 const singrid = require('./singrid');
+const mandala = require('./mandala');
 
 const variations = {
   offset,
+  mandala,
   eye,
   hwave,
   flutter,
