@@ -25,14 +25,15 @@ module.exports = () => {
   const R = gridSize / 2;
   const sqSize = gridSize / cellRowCount;
   const color = [
-    rndIntB(30, 255),
-    rndIntB(30, 255),
-    rndIntB(30, 255)
+    rndIntB(100, 255),
+    rndIntB(100, 255),
+    rndIntB(100, 255)
   ];
+  const iColor = color.map(c => 255 - c);
   const co = [
-    Number(Math.random().toFixed(3)),
-    Number(Math.random().toFixed(3)),
-    Number(Math.random().toFixed(3))
+    Number(mapRange(Math.random(), 0, 1, 0.5, 1).toFixed()),
+    Number(mapRange(Math.random(), 0, 1, 0.5, 1).toFixed()),
+    Number(mapRange(Math.random(), 0, 1, 0.5, 1).toFixed())
   ];
 
   const getFuncArgs = (x, y, t) => {
@@ -108,6 +109,7 @@ module.exports = () => {
 
   /** Draw **/
   background();
+  background(...iColor, 0.2);
 
   const draw = (frame) => {
     const t = frame / 10;
