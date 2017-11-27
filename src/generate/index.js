@@ -8,16 +8,18 @@ const pdj = require('./pdj');
 const eye = require('./eye');
 const singrid = require('./singrid');
 const mandala = require('./mandala');
+const orbits = require('./orbits');
 
 const variations = {
-  // offset,
+  offset,
   mandala,
   eye,
   hwave,
   flutter,
   kscope,
   pdj,
-  singrid
+  singrid,
+  orbits
 };
 
 module.exports = async () => {

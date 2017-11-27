@@ -101,7 +101,7 @@ module.exports = () => {
       const bl = ply.map(vec.fTransform(m4));
 
       strokeWeight(1);
-      stroke(...color, 0.1);
+      stroke(...color, 0.045);
       tl.forEach((p, i) => {
         line(tl[i], br[i]);
         line(bl[i], tr[i]);
@@ -114,9 +114,6 @@ module.exports = () => {
       strokeWeight(sw);
       stroke(...color, alpha);
       drawPoly(tl);
-      drawPoly(tr);
-      drawPoly(br);
-      drawPoly(bl);
     });
   }
   genArray(f).map((_, i) => draw(i));
